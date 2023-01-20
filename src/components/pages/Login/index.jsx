@@ -20,7 +20,7 @@ export default function Login() {
       dispatch(setToken({ access_token, expires_in }));
       navigate("/dashboard");
     }
-  }, []);
+  }, [dispatch, navigate]);
 
   const userLogin = () => {
     const clientId = process.env.REACT_APP_CLIENT_ID;
@@ -75,14 +75,8 @@ export default function Login() {
               <div class="my-12">
                 <p class="text-sm text-gray-500">
                   By creating an account, you agree to our{" "}
-                  <a href="#" class="text-gray-700 underline">
-                    terms and conditions{" "}
-                  </a>
-                  and{" "}
-                  <a href="#" class="text-gray-700 underline">
-                    privacy policy
-                  </a>
-                  .
+                  <p class="text-gray-700 underline">terms and conditions </p>
+                  and <p class="text-gray-700 underline">privacy policy</p>.
                 </p>
               </div>
             </div>

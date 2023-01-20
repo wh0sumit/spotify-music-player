@@ -29,7 +29,18 @@ export const fetchPlaylists = createAsyncThunk(
 const playlistsSlice = createSlice({
   name: "playlists",
   initialState,
-  reducers: {},
+  reducers: {
+    defaultPlaylists: (state) => {
+      state.playlists = JSON.parse(localStorage.getItem("playlists")) || null;
+    },
+
+    clearPlaylists: (state) => {
+      state.playlists = localStorage.removeItem("playlists");
+    },
+    updatePlaylists: (state, action) => {
+      state.playlists = action.payload;
+    },
+  },
   extraReducers: {
     [fetchPlaylists.pending]: (state) => {
       state.loading = true;
@@ -46,6 +57,9 @@ const playlistsSlice = createSlice({
     },
   },
 });
+
+export const { defaultPlaylists, clearPlaylists, updatePlaylists } =
+  playlistsSlice.actions;
 
 export default playlistsSlice.reducer;
 
