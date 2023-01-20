@@ -1,44 +1,27 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-export default function Search() {
-  const [input, setInput] = useState("");
-  const dispatch = useDispatch();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    if (input === "") {
-      console.log("empty");
-      dispatch(defaultPlaylists());
-    } else {
-      dispatch(searchData(input));
-    }
-  };
-
+import React from "react";
+import * as RiIcons from "react-icons/ri";
+export default function SearchBar({ onClick, onChange, value }) {
   return (
     <React.Fragment>
-      <form onSubmit={handleSearch}>
-        <label class="sr-only" for="search">
-          {" "}
-          Search{" "}
-        </label>
-
+      <div class="relative flex-1">
         <input
-          class="h-10 w-full rounded-lg border-none bg-white pl-4 pr-10 text-sm shadow-sm sm:w-56"
+          class="w-full rounded-md pr-10 shadow-sm sm:text-sm
+            focus:border-emerald-300 focus:ring-emerald-200 p-4 "
           id="search"
           type="search"
-          placeholder="Search website..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          placeholder="Search for your favourite music and artists here !"
+          value={value}
+          onChange={onChange}
+          onClick={onClick}
         />
 
-        <button
-          type="submit"
-          class="absolute top-1/2 right-1 -translate-y-1/2 rounded-md bg-gray-50 p-2 text-gray-600 transition hover:text-gray-700"
+        <span
+          class="pointer-events-none absolute inset-y-0 right-0 grid w-10 place-content-center bg-gray-100
+              m-2 rounded-md text-gray-900"
         >
-          <RiIcons.RiSearchLine />
-        </button>
-      </form>
+          <RiIcons.RiSearch2Line />
+        </span>
+      </div>
     </React.Fragment>
   );
 }

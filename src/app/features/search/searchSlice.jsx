@@ -3,13 +3,19 @@ import { updatePlaylists } from "../playlists/playlistsSlice";
 
 const initialState = {
   loading: false,
-  search: [],
+  search: {
+    tracks: [],
+    artists: [],
+    albums: [],
+    playlists: [],
+  },
+
   error: null,
 };
 
 export const searchData = createAsyncThunk(
   "search/searchData",
-  async (query = "rock", { dispatch }) => {
+  async (query, { dispatch }) => {
     const response = await fetch(
       `https://api.spotify.com/v1/search?q=${query}&type=track,artist,album,playlist&limit=20`,
       {
@@ -44,8 +50,10 @@ const searchSlice = createSlice({
     },
 
     [searchData.fulfilled]: (state, action) => {
+      state.loading = false;
       state.search = action.payload;
     },
+
     [searchData.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload;
