@@ -1,28 +1,33 @@
 import React from "react";
 
-export default function MusicCard() {
+export default function MusicCard({ name, image, type, onClick }) {
   return (
     <React.Fragment>
-      <div class="px-4 py-3">
+      <a
+        href="#"
+        class="block rounded-lg p-4 shadow-sm shadow-indigo-100 
+        hover:shadow-gray-200 hover:bg-gray-50
+        "
+        onClick={onClick}
+      >
         <img
-          alt="Lava"
-          src="https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          class="h-56 w-full rounded-xl object-cover shadow-lg transition group-hover:grayscale-[50%]"
+          alt="Home"
+          src={image}
+          class="h-56 w-full rounded-xl object-cover shadow-sm my-2"
         />
 
-        <div class="p-4">
-          <a href="#">
-            <h3 class="text-lg font-medium text-gray-900">
-              Finding the Journey to Mordor
-            </h3>
-          </a>
+        <a class="mt-2">
+          <div class="text-base font-medium text-gray-900">
+            <div className="inline-flex items-center px-2.5 py-0.5 rounded-md  text-xs font-medium bg-indigo-100 text-indigo-800 mt-2">
+              {type === "artist" ? "Artist" : "Playlist"}
+            </div>
 
-          <p class="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-3">
-            @ Album Name
-          </p>
-        </div>
-      </div>
+            <div>
+              <dd class="font-medium mt-2">{name}</dd>
+            </div>
+          </div>
+        </a>
+      </a>
     </React.Fragment>
   );
 }
-
