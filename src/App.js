@@ -14,10 +14,9 @@ function App() {
       <div class="mx-auto max-w-6xl items-center justify-between p-4">
         <Navbar />
 
-        <React.Suspense fallback={<div>Loading...</div>}>
+        <React.Suspense>
           <Routes>
             <Route path="/" element={<Home />} />
-
             <Route path="/login" element={<Login />} />
             <Route
               path="/dashboard"
@@ -27,7 +26,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/search" element={<Search />} />
+            <Route
+              path="/search"
+              element={
+                <ProtectedRoute>
+                  <Search />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<div>404</div>} />
           </Routes>
         </React.Suspense>

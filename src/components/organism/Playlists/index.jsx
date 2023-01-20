@@ -29,7 +29,7 @@ export default function Playlists() {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       borderRadius: "20px",
-      width: "40%",
+      width: "35%",
       height: "60%",
       padding: "5rem",
       backgroundColor: "#181818",
@@ -85,6 +85,7 @@ export default function Playlists() {
               name={track.name}
               image={track.image}
               artist={track.artist}
+              owner={track.owner}
               type="track"
             />
           ))}

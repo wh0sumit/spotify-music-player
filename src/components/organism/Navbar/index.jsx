@@ -57,22 +57,8 @@ export default function Navbar() {
           </NavLink>
 
           <ul class="flex items-center gap-2 text-sm font-medium text-gray-500">
-            <li class="hidden lg:block">
-              <NavLink to="/" className="px-3 py-2 rounded-lg">
-                {" "}
-                Home{" "}
-              </NavLink>
-            </li>
-
             <li>
-              <NavLink to="/about" className="px-3 py-2 rounded-lg">
-                {" "}
-                About{" "}
-              </NavLink>
-            </li>
-
-            <li>
-              <Button text="Get Started" size="sm" link="/login" />
+              <Button text="Get Started 🎧" size="sm" link="/login" />
             </li>
           </ul>
         </nav>

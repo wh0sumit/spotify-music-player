@@ -50,7 +50,7 @@ export default function Login() {
             <img
               alt="Night"
               src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              className="rounded-3xl"
+              className="object-cover w-full h-full border border-gray-100 shadow-sm rounded-3xl hover:border-gray-200 hover:ring-1 hover:ring-gray-200 "
             />
           </div>
           <main class="flex  justify-center sm:px-12 lg:col-span-7 lg:px-16 xl:col-span-6 items-center">
@@ -75,8 +75,11 @@ export default function Login() {
               <div class="my-12">
                 <p class="text-sm text-gray-500">
                   By creating an account, you agree to our{" "}
-                  <p class="text-gray-700 underline">terms and conditions </p>
-                  and <p class="text-gray-700 underline">privacy policy</p>.
+                  <span class="text-gray-700 underline">
+                    terms and conditions{" "}
+                  </span>
+                  and{" "}
+                  <span class="text-gray-700 underline">privacy policy</span>.
                 </p>
               </div>
             </div>
