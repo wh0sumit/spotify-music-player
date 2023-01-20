@@ -14,6 +14,7 @@ function App() {
     <React.Fragment>
       <div class="mx-auto max-w-5xl items-center justify-between p-4">
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
 
