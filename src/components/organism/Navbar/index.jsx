@@ -1,8 +1,12 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Button from "../../atoms/Button";
 
 export default function Navbar() {
+  const accessToken = useSelector((state) => state.token.access_token);
+
   return (
     <React.Fragment>
       <nav class="mx-auto flex max-w-5xl items-center justify-between py-4">
@@ -28,11 +32,21 @@ export default function Navbar() {
           </li>
 
           <li>
-            <Button text="Get Started" size="sm" link="/login" />
+            {accessToken ? (
+              <Button
+                text="Logout 👋"
+                size="sm"
+                onClick={() => {
+                  localStorage.removeItem("access_token");
+                  window.location.reload();
+                }}
+              />
+            ) : (
+              <Button text="Get Started" size="sm" link="/login" />
+            )}
           </li>
         </ul>
       </nav>
     </React.Fragment>
   );
 }
-
