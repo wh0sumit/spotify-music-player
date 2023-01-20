@@ -1,10 +1,7 @@
 import React from "react";
 import * as BiIcons from "react-icons/bi";
 
-import { useSelector } from "react-redux";
-
 export default function Header() {
-  const user = useSelector((state) => state.userData.user);
   return (
     <React.Fragment>
       <div class="mx-auto max-w-screen-xl sm:px-6 lg:px-8">
@@ -61,15 +58,15 @@ export default function Header() {
             >
               <span class="sr-only">Menu</span>
               <img
-                alt="Man"
-                src={user.photo}
+                alt="Profile"
+                src={user?.images[0]?.url || "https://i.pravatar.cc/300"}
                 class="h-10 w-10 rounded-full object-cover"
               />
 
               <p class="ml-2 hidden text-left text-xs sm:block">
-                <strong class="block font-medium">{user.name}</strong>
+                <strong class="block font-medium">{user?.display_name}</strong>
 
-                <span class="text-gray-500"> sumikumar1608@gmail.com </span>
+                <span class="text-gray-500"> {user?.email || ""} </span>
               </p>
             </button>
           </div>
@@ -77,7 +74,7 @@ export default function Header() {
 
         <div class="mt-8">
           <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
-            Welcome Back, Sumit!
+            Welcome Back, {user.name} 🎉
           </h1>
 
           <p class="mt-1.5 text-sm text-gray-500"> Enjoy your day! </p>
@@ -87,4 +84,3 @@ export default function Header() {
     </React.Fragment>
   );
 }
-
