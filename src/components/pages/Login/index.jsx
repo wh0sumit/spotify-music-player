@@ -1,7 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Button from "../../atoms/Button";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../../app/features/token/tokenSlice";
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    const access_token = params.get("access_token");
+    const expires_in = params.get("expires_in");
+    if (access_token) {
+      localStorage.setItem("access_token", access_token);
+      localStorage.setItem("expires_in", expires_in);
+      dispatch(setToken({ access_token, expires_in }));
+      navigate("/dashboard");
+    }
+  }, []);
+
   const userLogin = () => {
     const clientId = process.env.REACT_APP_CLIENT_ID;
     const redirectUrl = process.env.REACT_APP_REDIRECT_URI;
