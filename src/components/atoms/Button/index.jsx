@@ -24,4 +24,3 @@ export default function Button({ text, size, link, isexternal, onClick }) {
     </React.Fragment>
   );
 }
-

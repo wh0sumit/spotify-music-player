@@ -4,6 +4,10 @@ import Navbar from "./components/organism/Navbar";
 import Dashboard from "./components/pages/Dashboard";
 import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
+import Artists from "./components/Template/Artists";
+import Playlists from "./components/Template/Playlists";
+import Tracks from "./components/Template/Tracks";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
@@ -12,7 +16,19 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard>
+                  <Route path="playlists" element={<Playlists />} />
+                  <Route path="tracks" element={<Tracks />} />
+                  <Route path="/artists" element={<Artists />} />
+                </Dashboard>
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
@@ -21,4 +37,3 @@ function App() {
 }
 
 export default App;
-

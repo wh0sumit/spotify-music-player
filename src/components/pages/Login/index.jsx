@@ -3,8 +3,25 @@ import Button from "../../atoms/Button";
 
 export default function Login() {
   const userLogin = () => {
-    console.log("Login");
+    const clientId = process.env.REACT_APP_CLIENT_ID;
+    const redirectUrl = process.env.REACT_APP_REDIRECT_URI;
+    console.log(clientId);
+    const apiUrl = "https://accounts.spotify.com/authorize";
+    const scopes = [
+      "user-read-email",
+      "user-read-private",
+      "user-read-playback-state",
+      "user-modify-playback-state",
+      "user-read-currently-playing",
+      "user-top-read",
+      "user-read-recently-played",
+      "user-read-playback-position",
+    ];
+    window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(
+      " "
+    )}&response_type=token&show_dialog=true`;
   };
+
   return (
     <React.Fragment>
       <section class="bg-white pt-10">
@@ -55,4 +72,3 @@ export default function Login() {
     </React.Fragment>
   );
 }
-
