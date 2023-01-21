@@ -4,7 +4,7 @@ export default function MusicCard({ name, image, type, onClick, owner }) {
   return (
     <React.Fragment>
       <div
-        class="block 
+        className="block 
          hover:bg-gray-50 hover:drop-shadow-md transition-all duration-300 border-3  rounded-xl border border-gray-100 p-5 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring  bg-white
         "
         onClick={onClick}
@@ -12,12 +12,12 @@ export default function MusicCard({ name, image, type, onClick, owner }) {
         <img
           alt="music"
           src={image}
-          class="h-56 w-full rounded-xl object-cover "
+          className="h-56 w-full rounded-xl object-cover "
         />
 
-        <div class="mt-2">
+        <div className="mt-2">
           <div
-            class="text-base font-medium text-gray-900
+            className="text-base font-medium text-gray-900
             flex justify-between
           "
           >
@@ -37,7 +37,7 @@ export default function MusicCard({ name, image, type, onClick, owner }) {
             ) : null}
           </div>
           <div>
-            <p class="font-medium mt-2">{name}</p>
+            <p className="font-medium mt-2">{name}</p>
           </div>
         </div>
       </div>

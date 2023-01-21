@@ -20,7 +20,7 @@ export const fetchCurrentPlaylist = createAsyncThunk(
       .then((res) => res.json())
 
       .then((data) => {
-        console.log(data);
+      
         const selectedPlaylist = {
           id: data.id,
           name: data.name,

@@ -12,7 +12,6 @@ export default function Form() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    console.log(input);
     if (input === "") {
       dispatch(defaultPlaylists());
     } else {
@@ -23,7 +22,7 @@ export default function Form() {
   return (
     <React.Fragment>
       <form onSubmit={handleSearch}>
-        <div class="flex items-center justify-between mt-8 gap-40 mx-w-5xl">
+        <div className="flex items-center justify-between mt-8 gap-40 mx-w-5xl">
           <SearchBar
             value={input}
             onChange={(e) => setInput(e.target.value)}

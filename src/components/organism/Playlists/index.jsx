@@ -42,7 +42,7 @@ export default function Playlists() {
 
   return (
     <React.Fragment>
-      <div class="bg-gray-50 rounded-lg shadow-emerald-100 shadow-sm p-5 my-5">
+      <div className="p-5 my-5 rounded-lg shadow-sm bg-gray-50 shadow-emerald-100">
         <div className="m-2 my-8 ">
           <h1 className="text-2xl font-bold text-gray-900">My Playlists 🎧</h1>
           {

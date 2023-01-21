@@ -13,7 +13,6 @@ const tokenSlice = createSlice({
   reducers: {
     setToken: (state, action) => {
       state.access_token = action.payload.access_token;
-      state.expires_in = action.payload.expires_in;
     },
   },
 });
