@@ -1,77 +1,17 @@
 import React, { useState } from "react";
 
 import { useSelector } from "react-redux";
-import MusicCard from "../../molecules/Cards/MusicCard";
 import Form from "../../organism/Form";
 import * as RiIcons from "react-icons/ri";
+import SearchedResultCard from "../../molecules/Cards/SearchResultCard";
 
 export default function Search() {
   const [openTab, setOpenTab] = useState(1);
+
   const search = useSelector((state) => state.search);
+
   const searchValue = search.search;
   const tags = ["Tracks", "Artists", "Albums", "Playlists"];
-
-  const playlistsTab = () => {
-    return (
-      <>
-        {searchValue.playlists.map((playlist) => (
-          <MusicCard
-            key={playlist.id}
-            id={playlist.id}
-            name={playlist.name}
-            image={playlist.images[0]?.url}
-            owner={playlist.owner.display_name}
-            type="playlist"
-          />
-        ))}
-      </>
-    );
-  };
-  const tracksTab = () => {
-    return (
-      <>
-        {searchValue.tracks.map((track) => (
-          <MusicCard
-            key={track.id}
-            id={track.id}
-            name={track.name}
-            image={track.album.images[0]?.url}
-            type="track"
-          />
-        ))}
-      </>
-    );
-  };
-  const artistsTab = () => {
-    return (
-      <>
-        {searchValue.artists.map((artist) => (
-          <MusicCard
-            key={artist.id}
-            id={artist.id}
-            name={artist.name}
-            image={artist.images[0]?.url}
-            type="artist"
-          />
-        ))}
-      </>
-    );
-  };
-  const albumsTab = () => {
-    return (
-      <>
-        {searchValue.albums.map((album) => (
-          <MusicCard
-            key={album.id}
-            id={album.id}
-            name={album.name}
-            image={album.images[0]?.url}
-            type="album"
-          />
-        ))}
-      </>
-    );
-  };
 
   const tabs = [
     {
@@ -79,37 +19,37 @@ export default function Search() {
       name: "Playlists",
       icon: <RiIcons.RiMusicLine />,
       active: false,
-      component: playlistsTab(),
+      component: <SearchedResultCard playlists={searchValue.playlists} />,
     },
     {
       id: 2,
       name: "Tracks",
       icon: <RiIcons.RiListOrdered />,
       active: false,
-      component: tracksTab(),
+      component: <SearchedResultCard tracks={searchValue.tracks} />,
     },
     {
       id: 3,
       name: "Artists",
       icon: <RiIcons.RiUserAddLine />,
       active: false,
-      component: artistsTab(),
+      component: <SearchedResultCard artists={searchValue.artists} />,
     },
     {
       id: 4,
       name: "Albums",
       icon: <RiIcons.RiGalleryLine />,
       active: false,
-      component: albumsTab(),
+      component: <SearchedResultCard albums={searchValue.albums} />,
     },
   ];
 
   return (
     <React.Fragment>
-      <div class="bg-gray-50 rounded-lg shadow-emerald-100 shadow-sm p-10 my-5">
+      <div className="p-10 my-5 rounded-lg shadow-sm bg-gray-50 shadow-emerald-100">
         <div className="m-2 my-8 ">
           <h1 className="text-2xl font-bold text-gray-900">
-            Search for your favourite music and artists here 🤩
+            Search for your favourite track, artist, album or playlist here 🤩
           </h1>
           <div className="flex justify-between">
             <div className="flex gap-3 ">
