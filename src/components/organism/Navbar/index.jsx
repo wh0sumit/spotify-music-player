@@ -106,7 +106,9 @@ export default function Navbar() {
                   <span className="sr-only">Menu</span>
                   <img
                     alt="Man"
-                    src={user?.images[0]?.url || ""}
+                    src={
+                      user?.images[0]?.url || "https://i.imgur.com/6VBx3io.png"
+                    }
                     className="object-cover w-10 h-10 rounded-full"
                   />
 
