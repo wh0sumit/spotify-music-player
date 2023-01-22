@@ -9,7 +9,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const clientId = process.env.REACT_APP_CLIENT_ID;
-  const redirectUrl = process.env.REACT_APP_REDIRECT_URI;
+  const redirectUrl = process.env.REACT_APP_REDIRECT_URL;
   useEffect(() => {
     /* 
       This is a hacky way to get the access token from the URL hash. 
@@ -26,8 +26,6 @@ export default function Login() {
   }, [dispatch, navigate]);
 
   const userLogin = () => {
-    console.log(clientId, redirectUrl + "hellp");
-
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scopes = [
       "user-read-email",
