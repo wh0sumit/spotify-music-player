@@ -26,8 +26,6 @@ export default function Login() {
   }, [dispatch, navigate]);
 
   const userLogin = () => {
-    console.log(clientId, redirectUrl + "hellp");
-
     const apiUrl = "https://accounts.spotify.com/authorize";
     const scopes = [
       "user-read-email",
