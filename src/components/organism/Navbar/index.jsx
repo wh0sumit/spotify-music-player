@@ -22,9 +22,9 @@ export default function Navbar() {
   return (
     <React.Fragment>
       {accessToken ? (
-        <nav className="mx-auto flex max-w-6xl items-center justify-between py-4 flex-wrap">
+        <nav className="flex flex-wrap items-center justify-between max-w-6xl py-4 mx-auto">
           <NavLink to="/dashboard">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg">
               🎶
             </div>
           </NavLink>
@@ -49,9 +49,9 @@ export default function Navbar() {
           </ul>
         </nav>
       ) : (
-        <nav className="mx-auto flex max-w-6xl items-center justify-between py-4">
+        <nav className="flex items-center justify-between max-w-6xl py-4 mx-auto">
           <NavLink to="/">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">
+            <div className="inline-flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg">
               🎶
             </div>
           </NavLink>
@@ -66,9 +66,9 @@ export default function Navbar() {
       {accessToken && (
         <header
           aria-label="Page Header"
-          className="bg-gray-50 rounded-lg shadow-emerald-100 shadow-sm"
+          className="rounded-lg shadow-sm bg-gray-50 shadow-emerald-100"
         >
-          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 lg:px-8">
             <div className="flex items-center sm:justify-between sm:gap-4">
               <div className="relative hidden sm:block">
                 <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -81,7 +81,7 @@ export default function Navbar() {
                 </p>
               </div>
 
-              <div className="flex flex-1 items-center justify-between gap-8 sm:justify-end">
+              <div className="flex items-center justify-between flex-1 gap-8 sm:justify-end">
                 <div className="flex gap-4">
                   <button
                     type="button"
@@ -101,16 +101,16 @@ export default function Navbar() {
 
                 <button
                   type="button"
-                  className="group flex shrink-0 items-center rounded-lg transition"
+                  className="flex items-center transition rounded-lg group shrink-0"
                 >
                   <span className="sr-only">Menu</span>
                   <img
                     alt="Man"
-                    src={user?.images[0].url}
-                    className="h-10 w-10 rounded-full object-cover"
+                    src={user?.images[0]?.url || ""}
+                    className="object-cover w-10 h-10 rounded-full"
                   />
 
-                  <p className="ml-2 hidden text-left text-xs sm:block">
+                  <p className="hidden ml-2 text-xs text-left sm:block">
                     <strong className="block font-medium">
                       {user?.display_name}
                     </strong>
